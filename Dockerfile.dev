@@ -1,0 +1,17 @@
+# get the base node image
+FROM node:alpine as builder
+
+# set the working dir for container
+WORKDIR /gps-track-amplify-react-main
+
+# copy the json file first
+COPY ./package.json /gps-track-amplify-react-main
+
+# install npm dependencies
+RUN npm install
+
+# copy other project files
+COPY . .
+
+# build the folder
+CMD [ "npm", "run", "start" ]
